@@ -376,13 +376,7 @@ class CResNet(keras.Model):
             a = a + a * tY
         else:
             tY = a
-        '''
-            a = a * Softmax(axis=3)(a)              #<--- Poor training with default residual blocks
-            a = a + a * Softmax(axis=3)(a)          #<--- Poor training with default residual blocks
-            a = a + a * Softmax(axis=3)(a)          #<--- Enormous loss with explainable residual blocks
-        ''' 
-        #a = a * Softmax(axis=3)(g *a) # g = gain,  Scheduled <---- [Model 5]
-        
+
         if self.ModuleType == ResModuleType.RELU_ONLY_PREACTIVATION.value:
             pass
         if self.ModuleType == ResModuleType.FULL_PREACTIVATION.value:

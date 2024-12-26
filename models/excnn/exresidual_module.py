@@ -151,15 +151,11 @@ class ExResidualModule(layers.Layer):
 
     a = self.Pad2(a)
     a = self.Conv2(a)
-    # tSoftmaxInput = g * a # g = gain,  Scheduled   # <---- [Model 5]
+
     tSoftmaxInput = a
     if self.BlockType == 2:
       tY = 1.0 + self.Softmax(tSoftmaxInput)
       a = a * tY
-      # a = a + a*tY  #Model 3   <-- We need to add a so that gradient will still flow for the disabled activations done by the softmax layer
-    else:
-      tY = self.Softmax(a)
-      a = a * tY  # Model 4
     self.recordActivation(tY, True)
 
     b = self.BN2(a)

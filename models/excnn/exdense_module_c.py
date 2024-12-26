@@ -164,8 +164,7 @@ class ExDenseNetTransitionModuleClipped(layers.Layer):
   # --------------------------------------------------------------------------------------------------------------------
   def call(self, input):
     tA = input
-    # //TODO: Infer the input features during build
-    # nInputFeatureCount = input.get_shape().as_list()[3]
+
     tA = self.BatchNorm(tA)
     tA = self.Activation(tA)
     tA = self.TransConv2D(tA)

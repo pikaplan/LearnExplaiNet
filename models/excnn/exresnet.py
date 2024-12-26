@@ -166,39 +166,6 @@ class CExResidualModule(layers.Layer):
         
         return self.Output
     # --------------------------------------------------------------------------------------
-    ''''
-    def call_default(self, p_tInput):
-        self.Input = p_tInput
-        self.InputFeatures  = self.Input.get_shape().as_list()[3]
-        x = self.Input        
-        
-        tResidual = self.CallResidualConnection(x)
-        
-       
-        a = self.Pad1(x)
-        a = self.Conv1(a)
-        a = self.BN1(a)
-        a = Activation("relu")(a)
-
-        a = self.Pad2(a)    
-        a = self.Conv2(a)
-        #tSoftmaxInput = g * a # g = gain,  Scheduled   # <---- [Model 5]
-        tSoftmaxInput = a
-        if self.BlockType == 2:
-            tY = self.Softmax(tSoftmaxInput)
-            a = a + a*tY  #Model 3   <-- We need to add a so that gradient will still flow for the disabled activations done by the softmax layer
-        else:
-            tY = self.Softmax(a) 
-            a = a*tY   #Model 4
-        b = self.BN2(a)
-        y = Activation("relu")(b + tResidual)
-
-
-        self.Output = y   
-        
-        return self.Output    
-    '''
-    # --------------------------------------------------------------------------------------        
 # =========================================================================================================================
 
 

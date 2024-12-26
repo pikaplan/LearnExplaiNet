@@ -15,7 +15,7 @@ class LateralInhibitionExplainer(keras.Model):
     # ____________________________________________
     #   g(x) = a(x)*softmax(a(x)) + a(x) 
     #
-    #   Neurons is a(x) are inhibited/excited by the softmax(a(x)) confidence scores
+    #   Activations of neurons a(x) are inhibited/excited by the softmax(a(x)) confidence scores
     # ____________________________________________
     tG = tA * (1.0 + tS)  
     tExplanation = K.expand_dims(K.argmax(tS), -1) + 1
