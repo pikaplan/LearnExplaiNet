@@ -1,0 +1,444 @@
+[~] Machine Learning Compute Infrastructure
+ |__ GPU.Name                                         : NVIDIA A16
+ |__ GPU.ComputeCapability                            : 8.6
+ |__ CUDA.Release                                     : release 12.2
+ |__ CUDA.Version                                     : V12.2.140
+ |__ CUDA.cuDNN.Version                               : 8.9.6.50-1+cuda12.2
+ |__ (T) Tensorflow
+      |__ Tensorflow.Version                               : 2.15.1
+      |__ Tensorflow.BuildFor.CUDA                         : 12.2
+      |__ Tensorflow.BuildFor.cuDNN                        : 8
+      |__ Tensorflow.BuildFor.SupportedComputeCapabilities : ['5.0', '6.0', '7.0', '7.5', '8.0']
+      |__ Tensorflow.UsedComputeCapability                 : 8.0
+      |__ Tensorflow.GPUs.Available                        : [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+      |__ Tensorflow.GPUs.Visible                          : [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]
+      |__ Tensorflow.GPUs                                  : /device:GPU:0
+(>) Command line parameters:['/home/pikaplanoglou/Code/ReXplaiNet/XTrainMultiParallel.py', '-g', 'Q_RESNET_MNIST', '-ds', 'mnist', '-c', '/mnt/SSD/MLModels/__Queue__/.done/LREXPLAINET22_MNIST_64-03.json', '-ug', '1']
+      |__ ModelNumber=64
+(>) Random seed set to 2016
+(+) Tensorflow: Enabling deterministic operations
+(-) Tensorflow: Disabling tensor float 32
+[?] Experiment started at 2024-05-14T19:46:38
+ |__ model                   : None
+ |__ variation               : 64 fold: 3
+ |__ configuration file      : /mnt/SSD/MLModels/__Queue__/.done/LREXPLAINET22_MNIST_64-03.json
+(~) Environment: cuDNN Backward Filter Algorithm is FFT
+(-) Environment: Disabled automixed precision
+Dataset [mnist]
+  |__ FeatureCount: 784
+  |__ ClassCount: 10
+  |__ Training set samples  : 60000   shape:(60000, 28, 28, 1)
+  |__ Training set targets  : 60000   shape:(60000,)
+  |__ Validation set samples: 10000   shape:(10000, 28, 28, 1)
+  |__ Validation set targets: 10000   shape:(10000,)
+Training data feed object: <_BatchDataset element_spec=(TensorSpec(shape=(None, 28, 28, 1), dtype=tf.float32, name=None), TensorSpec(shape=(None, 10), dtype=tf.float32, name=None))>
+Validation data feed object: <_BatchDataset element_spec=(TensorSpec(shape=(None, 28, 28, 1), dtype=tf.float32, name=None), TensorSpec(shape=(None, 10), dtype=tf.float32, name=None))>
+(>) Creating model
+Architecture:/mnt/SSD/MLModels/__Queue__/.done/LREXPLAINET22_MNIST_64-03.json
+(*) Layers
+WeightDecay:0.00100
+Stem
+ |_ Conv Layer Features:64 Stride:1
+ |_ BatchNormalization momentum:0.99 epsilon:0.001000
+Stack 1
+     |__ no adaptation for residual connection input
+ |_ ResBlock1 :CRExplaiNetModule  Features:64  Stride:1
+     |__ no adaptation for residual connection input
+ |_ ResBlock2 :CRExplaiNetModule  Features:64  Stride:1
+Stack 2
+     |__ Average pooling on residual connection input
+ |_ ResBlock1 :CRExplaiNetModule  Features:64  Stride:2
+     |__ no adaptation for residual connection input
+ |_ ResBlock2 :CRExplaiNetModule  Features:64  Stride:1
+Stack 3
+     |__ no adaptation for residual connection input
+ |_ ResBlock1 :CRExplaiNetModule  Features:64  Stride:1
+     |__ no adaptation for residual connection input
+ |_ ResBlock2 :CRExplaiNetModule  Features:64  Stride:1
+Stack 4
+     |__ Average pooling on residual connection input
+ |_ ResBlock1 :CRExplaiNetModule  Features:64  Stride:2
+     |__ no adaptation for residual connection input
+ |_ ResBlock2 :CRExplaiNetModule  Features:64  Stride:1
+Stack 5
+     |__ Average pooling on residual connection input
+ |_ ResBlock1 :CRExplaiNetModule  Features:64  Stride:2
+     |__ no adaptation for residual connection input
+ |_ ResBlock2 :CRExplaiNetModule  Features:64  Stride:1
+Global Average Pooling
+Learning algorithm SGD
+LR: 0.020000
+Epoch 1/60
+
+Epoch 1: val_average_accuracy improved from -inf to 0.57700, saving model to /mnt/SSD/MLModels/Q_RESNET_MNIST/LREXPLAINET22_MNIST_64-03/checkpoints/1
+469/469 - 84s - loss: 2.4666 - average_accuracy: 0.9471 - val_loss: 3.1854 - val_average_accuracy: 0.5770 - lr: 0.0200 - 84s/epoch - 180ms/step
+LR: 0.020000
+Epoch 2/60
+
+Epoch 2: val_average_accuracy improved from 0.57700 to 0.94820, saving model to /mnt/SSD/MLModels/Q_RESNET_MNIST/LREXPLAINET22_MNIST_64-03/checkpoints/2
+469/469 - 76s - loss: 1.6269 - average_accuracy: 0.9885 - val_loss: 1.4761 - val_average_accuracy: 0.9482 - lr: 0.0200 - 76s/epoch - 162ms/step
+LR: 0.020000
+Epoch 3/60
+
+Epoch 3: val_average_accuracy improved from 0.94820 to 0.97270, saving model to /mnt/SSD/MLModels/Q_RESNET_MNIST/LREXPLAINET22_MNIST_64-03/checkpoints/3
+469/469 - 77s - loss: 1.1335 - average_accuracy: 0.9905 - val_loss: 0.9983 - val_average_accuracy: 0.9727 - lr: 0.0200 - 77s/epoch - 163ms/step
+LR: 0.020000
+Epoch 4/60
+
+Epoch 4: val_average_accuracy did not improve from 0.97270
+469/469 - 75s - loss: 0.7957 - average_accuracy: 0.9916 - val_loss: 0.8744 - val_average_accuracy: 0.9199 - lr: 0.0200 - 75s/epoch - 161ms/step
+LR: 0.020000
+Epoch 5/60
+
+Epoch 5: val_average_accuracy did not improve from 0.97270
+469/469 - 76s - loss: 0.5654 - average_accuracy: 0.9918 - val_loss: 0.5519 - val_average_accuracy: 0.9684 - lr: 0.0200 - 76s/epoch - 163ms/step
+LR: 0.020000
+Epoch 6/60
+
+Epoch 6: val_average_accuracy did not improve from 0.97270
+469/469 - 77s - loss: 0.4117 - average_accuracy: 0.9912 - val_loss: 0.5859 - val_average_accuracy: 0.9191 - lr: 0.0200 - 77s/epoch - 164ms/step
+LR: 0.020000
+Epoch 7/60
+
+Epoch 7: val_average_accuracy did not improve from 0.97270
+469/469 - 77s - loss: 0.3015 - average_accuracy: 0.9919 - val_loss: 0.5701 - val_average_accuracy: 0.8888 - lr: 0.0200 - 77s/epoch - 163ms/step
+LR: 0.020000
+Epoch 8/60
+
+Epoch 8: val_average_accuracy did not improve from 0.97270
+469/469 - 76s - loss: 0.2320 - average_accuracy: 0.9911 - val_loss: 0.6094 - val_average_accuracy: 0.8822 - lr: 0.0200 - 76s/epoch - 162ms/step
+LR: 0.020000
+Epoch 9/60
+
+Epoch 9: val_average_accuracy did not improve from 0.97270
+469/469 - 77s - loss: 0.1783 - average_accuracy: 0.9920 - val_loss: 0.3964 - val_average_accuracy: 0.9123 - lr: 0.0200 - 77s/epoch - 165ms/step
+LR: 0.020000
+Epoch 10/60
+
+Epoch 10: val_average_accuracy did not improve from 0.97270
+469/469 - 76s - loss: 0.1449 - average_accuracy: 0.9916 - val_loss: 0.2192 - val_average_accuracy: 0.9588 - lr: 0.0200 - 76s/epoch - 163ms/step
+LR: 0.020000
+Epoch 11/60
+
+Epoch 11: val_average_accuracy did not improve from 0.97270
+469/469 - 77s - loss: 0.1194 - average_accuracy: 0.9922 - val_loss: 0.4268 - val_average_accuracy: 0.8886 - lr: 0.0200 - 77s/epoch - 164ms/step
+LR: 0.020000
+Epoch 12/60
+
+Epoch 12: val_average_accuracy did not improve from 0.97270
+469/469 - 77s - loss: 0.1014 - average_accuracy: 0.9926 - val_loss: 0.1699 - val_average_accuracy: 0.9656 - lr: 0.0200 - 77s/epoch - 164ms/step
+LR: 0.020000
+Epoch 13/60
+
+Epoch 13: val_average_accuracy did not improve from 0.97270
+469/469 - 76s - loss: 0.0939 - average_accuracy: 0.9916 - val_loss: 0.1825 - val_average_accuracy: 0.9612 - lr: 0.0200 - 76s/epoch - 162ms/step
+LR: 0.020000
+Epoch 14/60
+
+Epoch 14: val_average_accuracy did not improve from 0.97270
+469/469 - 76s - loss: 0.0835 - average_accuracy: 0.9923 - val_loss: 0.1554 - val_average_accuracy: 0.9686 - lr: 0.0200 - 76s/epoch - 162ms/step
+LR: 0.020000
+Epoch 15/60
+
+Epoch 15: val_average_accuracy did not improve from 0.97270
+469/469 - 76s - loss: 0.0784 - average_accuracy: 0.9926 - val_loss: 0.1621 - val_average_accuracy: 0.9607 - lr: 0.0200 - 76s/epoch - 161ms/step
+Schedule #1: Setting LR to 0.01000
+LR: 0.010000
+Epoch 16/60
+
+Epoch 16: val_average_accuracy improved from 0.97270 to 0.99180, saving model to /mnt/SSD/MLModels/Q_RESNET_MNIST/LREXPLAINET22_MNIST_64-03/checkpoints/16
+469/469 - 77s - loss: 0.0595 - average_accuracy: 0.9965 - val_loss: 0.0716 - val_average_accuracy: 0.9918 - lr: 0.0100 - 77s/epoch - 164ms/step
+LR: 0.010000
+Epoch 17/60
+
+Epoch 17: val_average_accuracy did not improve from 0.99180
+469/469 - 76s - loss: 0.0504 - average_accuracy: 0.9976 - val_loss: 0.0636 - val_average_accuracy: 0.9918 - lr: 0.0100 - 76s/epoch - 162ms/step
+LR: 0.010000
+Epoch 18/60
+
+Epoch 18: val_average_accuracy improved from 0.99180 to 0.99350, saving model to /mnt/SSD/MLModels/Q_RESNET_MNIST/LREXPLAINET22_MNIST_64-03/checkpoints/18
+469/469 - 78s - loss: 0.0453 - average_accuracy: 0.9976 - val_loss: 0.0588 - val_average_accuracy: 0.9935 - lr: 0.0100 - 78s/epoch - 167ms/step
+LR: 0.010000
+Epoch 19/60
+
+Epoch 19: val_average_accuracy did not improve from 0.99350
+469/469 - 77s - loss: 0.0432 - average_accuracy: 0.9970 - val_loss: 0.0657 - val_average_accuracy: 0.9900 - lr: 0.0100 - 77s/epoch - 163ms/step
+LR: 0.010000
+Epoch 20/60
+
+Epoch 20: val_average_accuracy did not improve from 0.99350
+469/469 - 76s - loss: 0.0439 - average_accuracy: 0.9961 - val_loss: 0.1025 - val_average_accuracy: 0.9788 - lr: 0.0100 - 76s/epoch - 163ms/step
+LR: 0.010000
+Epoch 21/60
+
+Epoch 21: val_average_accuracy did not improve from 0.99350
+469/469 - 76s - loss: 0.0402 - average_accuracy: 0.9969 - val_loss: 0.0547 - val_average_accuracy: 0.9924 - lr: 0.0100 - 76s/epoch - 162ms/step
+LR: 0.010000
+Epoch 22/60
+
+Epoch 22: val_average_accuracy did not improve from 0.99350
+469/469 - 75s - loss: 0.0428 - average_accuracy: 0.9956 - val_loss: 0.3639 - val_average_accuracy: 0.8905 - lr: 0.0100 - 75s/epoch - 161ms/step
+LR: 0.010000
+Epoch 23/60
+
+Epoch 23: val_average_accuracy did not improve from 0.99350
+469/469 - 77s - loss: 0.0411 - average_accuracy: 0.9963 - val_loss: 0.0599 - val_average_accuracy: 0.9894 - lr: 0.0100 - 77s/epoch - 163ms/step
+LR: 0.010000
+Epoch 24/60
+
+Epoch 24: val_average_accuracy did not improve from 0.99350
+469/469 - 77s - loss: 0.0415 - average_accuracy: 0.9960 - val_loss: 0.2214 - val_average_accuracy: 0.9467 - lr: 0.0100 - 77s/epoch - 164ms/step
+LR: 0.010000
+Epoch 25/60
+
+Epoch 25: val_average_accuracy did not improve from 0.99350
+469/469 - 77s - loss: 0.0365 - average_accuracy: 0.9974 - val_loss: 0.2222 - val_average_accuracy: 0.9393 - lr: 0.0100 - 77s/epoch - 164ms/step
+LR: 0.010000
+Epoch 26/60
+
+Epoch 26: val_average_accuracy did not improve from 0.99350
+469/469 - 76s - loss: 0.0404 - average_accuracy: 0.9958 - val_loss: 0.1138 - val_average_accuracy: 0.9742 - lr: 0.0100 - 76s/epoch - 162ms/step
+LR: 0.010000
+Epoch 27/60
+
+Epoch 27: val_average_accuracy did not improve from 0.99350
+469/469 - 78s - loss: 0.0404 - average_accuracy: 0.9961 - val_loss: 0.0520 - val_average_accuracy: 0.9920 - lr: 0.0100 - 78s/epoch - 166ms/step
+LR: 0.010000
+Epoch 28/60
+
+Epoch 28: val_average_accuracy did not improve from 0.99350
+469/469 - 78s - loss: 0.0374 - average_accuracy: 0.9968 - val_loss: 0.0584 - val_average_accuracy: 0.9906 - lr: 0.0100 - 78s/epoch - 165ms/step
+LR: 0.010000
+Epoch 29/60
+
+Epoch 29: val_average_accuracy did not improve from 0.99350
+469/469 - 77s - loss: 0.0364 - average_accuracy: 0.9969 - val_loss: 0.1327 - val_average_accuracy: 0.9622 - lr: 0.0100 - 77s/epoch - 163ms/step
+LR: 0.010000
+Epoch 30/60
+
+Epoch 30: val_average_accuracy did not improve from 0.99350
+469/469 - 76s - loss: 0.0368 - average_accuracy: 0.9970 - val_loss: 0.0700 - val_average_accuracy: 0.9853 - lr: 0.0100 - 76s/epoch - 163ms/step
+Schedule #2: Setting LR to 0.00500
+LR: 0.005000
+Epoch 31/60
+
+Epoch 31: val_average_accuracy improved from 0.99350 to 0.99540, saving model to /mnt/SSD/MLModels/Q_RESNET_MNIST/LREXPLAINET22_MNIST_64-03/checkpoints/31
+469/469 - 77s - loss: 0.0289 - average_accuracy: 0.9991 - val_loss: 0.0386 - val_average_accuracy: 0.9954 - lr: 0.0050 - 77s/epoch - 164ms/step
+LR: 0.005000
+Epoch 32/60
+
+Epoch 32: val_average_accuracy did not improve from 0.99540
+469/469 - 76s - loss: 0.0254 - average_accuracy: 0.9995 - val_loss: 0.0394 - val_average_accuracy: 0.9949 - lr: 0.0050 - 76s/epoch - 162ms/step
+LR: 0.005000
+Epoch 33/60
+
+Epoch 33: val_average_accuracy improved from 0.99540 to 0.99640, saving model to /mnt/SSD/MLModels/Q_RESNET_MNIST/LREXPLAINET22_MNIST_64-03/checkpoints/33
+469/469 - 77s - loss: 0.0228 - average_accuracy: 0.9998 - val_loss: 0.0337 - val_average_accuracy: 0.9964 - lr: 0.0050 - 77s/epoch - 163ms/step
+LR: 0.005000
+Epoch 34/60
+
+Epoch 34: val_average_accuracy improved from 0.99640 to 0.99650, saving model to /mnt/SSD/MLModels/Q_RESNET_MNIST/LREXPLAINET22_MNIST_64-03/checkpoints/34
+469/469 - 77s - loss: 0.0212 - average_accuracy: 0.9998 - val_loss: 0.0325 - val_average_accuracy: 0.9965 - lr: 0.0050 - 77s/epoch - 164ms/step
+LR: 0.005000
+Epoch 35/60
+
+Epoch 35: val_average_accuracy did not improve from 0.99650
+469/469 - 76s - loss: 0.0200 - average_accuracy: 0.9997 - val_loss: 0.0425 - val_average_accuracy: 0.9934 - lr: 0.0050 - 76s/epoch - 162ms/step
+LR: 0.005000
+Epoch 36/60
+
+Epoch 36: val_average_accuracy did not improve from 0.99650
+469/469 - 77s - loss: 0.0182 - average_accuracy: 0.9999 - val_loss: 0.0313 - val_average_accuracy: 0.9961 - lr: 0.0050 - 77s/epoch - 164ms/step
+LR: 0.005000
+Epoch 37/60
+
+Epoch 37: val_average_accuracy did not improve from 0.99650
+469/469 - 75s - loss: 0.0172 - average_accuracy: 0.9998 - val_loss: 0.0293 - val_average_accuracy: 0.9962 - lr: 0.0050 - 75s/epoch - 161ms/step
+LR: 0.005000
+Epoch 38/60
+
+Epoch 38: val_average_accuracy improved from 0.99650 to 0.99660, saving model to /mnt/SSD/MLModels/Q_RESNET_MNIST/LREXPLAINET22_MNIST_64-03/checkpoints/38
+469/469 - 76s - loss: 0.0170 - average_accuracy: 0.9997 - val_loss: 0.0269 - val_average_accuracy: 0.9966 - lr: 0.0050 - 76s/epoch - 163ms/step
+LR: 0.005000
+Epoch 39/60
+
+Epoch 39: val_average_accuracy did not improve from 0.99660
+469/469 - 76s - loss: 0.0169 - average_accuracy: 0.9994 - val_loss: 0.2631 - val_average_accuracy: 0.9163 - lr: 0.0050 - 76s/epoch - 163ms/step
+LR: 0.005000
+Epoch 40/60
+
+Epoch 40: val_average_accuracy did not improve from 0.99660
+469/469 - 75s - loss: 0.0230 - average_accuracy: 0.9976 - val_loss: 0.0767 - val_average_accuracy: 0.9799 - lr: 0.0050 - 75s/epoch - 160ms/step
+Schedule #3: Setting LR to 0.00200
+LR: 0.002000
+Epoch 41/60
+
+Epoch 41: val_average_accuracy improved from 0.99660 to 0.99670, saving model to /mnt/SSD/MLModels/Q_RESNET_MNIST/LREXPLAINET22_MNIST_64-03/checkpoints/41
+469/469 - 76s - loss: 0.0181 - average_accuracy: 0.9992 - val_loss: 0.0270 - val_average_accuracy: 0.9967 - lr: 0.0020 - 76s/epoch - 162ms/step
+LR: 0.002000
+Epoch 42/60
+
+Epoch 42: val_average_accuracy improved from 0.99670 to 0.99710, saving model to /mnt/SSD/MLModels/Q_RESNET_MNIST/LREXPLAINET22_MNIST_64-03/checkpoints/42
+469/469 - 77s - loss: 0.0157 - average_accuracy: 0.9999 - val_loss: 0.0253 - val_average_accuracy: 0.9971 - lr: 0.0020 - 77s/epoch - 164ms/step
+LR: 0.002000
+Epoch 43/60
+
+Epoch 43: val_average_accuracy improved from 0.99710 to 0.99790, saving model to /mnt/SSD/MLModels/Q_RESNET_MNIST/LREXPLAINET22_MNIST_64-03/checkpoints/43
+469/469 - 77s - loss: 0.0148 - average_accuracy: 1.0000 - val_loss: 0.0234 - val_average_accuracy: 0.9979 - lr: 0.0020 - 77s/epoch - 163ms/step
+LR: 0.002000
+Epoch 44/60
+
+Epoch 44: val_average_accuracy did not improve from 0.99790
+469/469 - 76s - loss: 0.0143 - average_accuracy: 1.0000 - val_loss: 0.0234 - val_average_accuracy: 0.9976 - lr: 0.0020 - 76s/epoch - 162ms/step
+LR: 0.002000
+Epoch 45/60
+
+Epoch 45: val_average_accuracy did not improve from 0.99790
+469/469 - 78s - loss: 0.0138 - average_accuracy: 1.0000 - val_loss: 0.0226 - val_average_accuracy: 0.9979 - lr: 0.0020 - 78s/epoch - 166ms/step
+LR: 0.002000
+Epoch 46/60
+
+Epoch 46: val_average_accuracy did not improve from 0.99790
+469/469 - 76s - loss: 0.0133 - average_accuracy: 1.0000 - val_loss: 0.0221 - val_average_accuracy: 0.9977 - lr: 0.0020 - 76s/epoch - 162ms/step
+LR: 0.002000
+Epoch 47/60
+
+Epoch 47: val_average_accuracy did not improve from 0.99790
+469/469 - 75s - loss: 0.0129 - average_accuracy: 1.0000 - val_loss: 0.0217 - val_average_accuracy: 0.9978 - lr: 0.0020 - 75s/epoch - 161ms/step
+LR: 0.002000
+Epoch 48/60
+
+Epoch 48: val_average_accuracy did not improve from 0.99790
+469/469 - 75s - loss: 0.0125 - average_accuracy: 1.0000 - val_loss: 0.0212 - val_average_accuracy: 0.9975 - lr: 0.0020 - 75s/epoch - 159ms/step
+LR: 0.002000
+Epoch 49/60
+
+Epoch 49: val_average_accuracy did not improve from 0.99790
+469/469 - 75s - loss: 0.0121 - average_accuracy: 1.0000 - val_loss: 0.0215 - val_average_accuracy: 0.9977 - lr: 0.0020 - 75s/epoch - 159ms/step
+LR: 0.002000
+Epoch 50/60
+
+Epoch 50: val_average_accuracy did not improve from 0.99790
+469/469 - 75s - loss: 0.0117 - average_accuracy: 1.0000 - val_loss: 0.0206 - val_average_accuracy: 0.9978 - lr: 0.0020 - 75s/epoch - 160ms/step
+Schedule #4: Setting LR to 0.00100
+LR: 0.001000
+Epoch 51/60
+
+Epoch 51: val_average_accuracy did not improve from 0.99790
+469/469 - 75s - loss: 0.0114 - average_accuracy: 1.0000 - val_loss: 0.0202 - val_average_accuracy: 0.9978 - lr: 0.0010 - 75s/epoch - 159ms/step
+LR: 0.001000
+Epoch 52/60
+
+Epoch 52: val_average_accuracy improved from 0.99790 to 0.99800, saving model to /mnt/SSD/MLModels/Q_RESNET_MNIST/LREXPLAINET22_MNIST_64-03/checkpoints/52
+469/469 - 75s - loss: 0.0112 - average_accuracy: 1.0000 - val_loss: 0.0198 - val_average_accuracy: 0.9980 - lr: 0.0010 - 75s/epoch - 161ms/step
+LR: 0.001000
+Epoch 53/60
+
+Epoch 53: val_average_accuracy did not improve from 0.99800
+469/469 - 75s - loss: 0.0111 - average_accuracy: 1.0000 - val_loss: 0.0199 - val_average_accuracy: 0.9977 - lr: 0.0010 - 75s/epoch - 159ms/step
+LR: 0.001000
+Epoch 54/60
+
+Epoch 54: val_average_accuracy did not improve from 0.99800
+469/469 - 77s - loss: 0.0109 - average_accuracy: 1.0000 - val_loss: 0.0196 - val_average_accuracy: 0.9978 - lr: 0.0010 - 77s/epoch - 164ms/step
+LR: 0.001000
+Epoch 55/60
+
+Epoch 55: val_average_accuracy did not improve from 0.99800
+469/469 - 75s - loss: 0.0107 - average_accuracy: 1.0000 - val_loss: 0.0196 - val_average_accuracy: 0.9978 - lr: 0.0010 - 75s/epoch - 160ms/step
+LR: 0.001000
+Epoch 56/60
+
+Epoch 56: val_average_accuracy did not improve from 0.99800
+469/469 - 75s - loss: 0.0106 - average_accuracy: 1.0000 - val_loss: 0.0192 - val_average_accuracy: 0.9978 - lr: 0.0010 - 75s/epoch - 160ms/step
+LR: 0.001000
+Epoch 57/60
+
+Epoch 57: val_average_accuracy did not improve from 0.99800
+469/469 - 75s - loss: 0.0104 - average_accuracy: 1.0000 - val_loss: 0.0191 - val_average_accuracy: 0.9978 - lr: 0.0010 - 75s/epoch - 160ms/step
+LR: 0.001000
+Epoch 58/60
+
+Epoch 58: val_average_accuracy did not improve from 0.99800
+469/469 - 76s - loss: 0.0103 - average_accuracy: 1.0000 - val_loss: 0.0191 - val_average_accuracy: 0.9980 - lr: 0.0010 - 76s/epoch - 162ms/step
+LR: 0.001000
+Epoch 59/60
+
+Epoch 59: val_average_accuracy did not improve from 0.99800
+469/469 - 75s - loss: 0.0101 - average_accuracy: 1.0000 - val_loss: 0.0188 - val_average_accuracy: 0.9978 - lr: 0.0010 - 75s/epoch - 160ms/step
+LR: 0.001000
+Epoch 60/60
+
+Epoch 60: val_average_accuracy did not improve from 0.99800
+469/469 - 75s - loss: 0.0100 - average_accuracy: 1.0000 - val_loss: 0.0188 - val_average_accuracy: 0.9980 - lr: 0.0010 - 75s/epoch - 160ms/step
+  1/100 [..............................] - ETA: 49s  4/100 [>.............................] - ETA: 2s   6/100 [>.............................] - ETA: 2s  8/100 [=>............................] - ETA: 2s 10/100 [==>...........................] - ETA: 2s 12/100 [==>...........................] - ETA: 2s 14/100 [===>..........................] - ETA: 2s 16/100 [===>..........................] - ETA: 2s 18/100 [====>.........................] - ETA: 2s 20/100 [=====>........................] - ETA: 2s 22/100 [=====>........................] - ETA: 2s 24/100 [======>.......................] - ETA: 2s 26/100 [======>.......................] - ETA: 2s 28/100 [=======>......................] - ETA: 2s 30/100 [========>.....................] - ETA: 2s 32/100 [========>.....................] - ETA: 2s 34/100 [=========>....................] - ETA: 1s 36/100 [=========>....................] - ETA: 1s 38/100 [==========>...................] - ETA: 1s 40/100 [===========>..................] - ETA: 1s 42/100 [===========>..................] - ETA: 1s 44/100 [============>.................] - ETA: 1s 46/100 [============>.................] - ETA: 1s 48/100 [=============>................] - ETA: 1s 50/100 [==============>...............] - ETA: 1s 52/100 [==============>...............] - ETA: 1s 54/100 [===============>..............] - ETA: 1s 56/100 [===============>..............] - ETA: 1s 58/100 [================>.............] - ETA: 1s 60/100 [=================>............] - ETA: 1s 62/100 [=================>............] - ETA: 1s 64/100 [==================>...........] - ETA: 1s 66/100 [==================>...........] - ETA: 1s 68/100 [===================>..........] - ETA: 0s 70/100 [====================>.........] - ETA: 0s 72/100 [====================>.........] - ETA: 0s 74/100 [=====================>........] - ETA: 0s 76/100 [=====================>........] - ETA: 0s 78/100 [======================>.......] - ETA: 0s 80/100 [=======================>......] - ETA: 0s 82/100 [=======================>......] - ETA: 0s 84/100 [========================>.....] - ETA: 0s 86/100 [========================>.....] - ETA: 0s 88/100 [=========================>....] - ETA: 0s 90/100 [==========================>...] - ETA: 0s 92/100 [==========================>...] - ETA: 0s 94/100 [===========================>..] - ETA: 0s 96/100 [===========================>..] - ETA: 0s 98/100 [============================>.] - ETA: 0s100/100 [==============================] - ETA: 0s100/100 [==============================] - 4s 31ms/step
+                    Predicted  
+               ----------------------------------------------------
+        Actual |  980    0    0    0    0    0    0    0    0    0 |
+               |    0 1134    0    0    0    0    1    0    0    0 |
+               |    1    0 1031    0    0    0    0    0    0    0 |
+               |    0    0    0 1008    0    1    0    0    1    0 |
+               |    0    0    0    0  980    0    0    0    0    2 |
+               |    0    0    0    1    0  890    1    0    0    0 |
+               |    1    1    0    0    0    0  955    0    1    0 |
+               |    0    1    3    0    0    0    0 1024    0    0 |
+               |    1    0    0    0    0    0    0    0  973    0 |
+               |    0    0    0    0    4    0    0    0    0 1005 |
+               ----------------------------------------------------
+Accuracy                      : 0.9980
+Per Class Recall (Accuracy)   : [1.         0.99911894 0.99903101 0.9980198  0.99796334 0.99775785
+ 0.99686848 0.99610895 0.99897331 0.99603568]
+Per Class Precision           : [0.99694812 0.99823944 0.99709865 0.99900892 0.99593496 0.99887767
+ 0.99791014 1.         0.99794872 0.9980139 ]
+AverageF1Score                : 0.9980
+Model: "c_res_net"
+_________________________________________________________________
+ Layer (type)                Output Shape              Param #   
+=================================================================
+ cr_explai_net_module (CREx  multiple                  74240     
+ plaiNetModule)                                                  
+                                                                 
+ cr_explai_net_module_1 (CR  multiple                  74240     
+ ExplaiNetModule)                                                
+                                                                 
+ cr_explai_net_module_2 (CR  multiple                  74240     
+ ExplaiNetModule)                                                
+                                                                 
+ cr_explai_net_module_3 (CR  multiple                  74240     
+ ExplaiNetModule)                                                
+                                                                 
+ cr_explai_net_module_4 (CR  multiple                  74240     
+ ExplaiNetModule)                                                
+                                                                 
+ cr_explai_net_module_5 (CR  multiple                  74240     
+ ExplaiNetModule)                                                
+                                                                 
+ cr_explai_net_module_6 (CR  multiple                  74240     
+ ExplaiNetModule)                                                
+                                                                 
+ cr_explai_net_module_7 (CR  multiple                  74240     
+ ExplaiNetModule)                                                
+                                                                 
+ cr_explai_net_module_8 (CR  multiple                  74240     
+ ExplaiNetModule)                                                
+                                                                 
+ cr_explai_net_module_9 (CR  multiple                  74240     
+ ExplaiNetModule)                                                
+                                                                 
+ conv2d (Conv2D)             multiple                  576       
+                                                                 
+ batch_normalization (Batch  multiple                  256       
+ Normalization)                                                  
+                                                                 
+ global_average_pooling2d (  multiple                  0         
+ GlobalAveragePooling2D)                                         
+                                                                 
+ dense (Dense)               multiple                  650       
+                                                                 
+ softmax_10 (Softmax)        multiple                  0         
+                                                                 
+=================================================================
+Total params: 743882 (2.84 MB)
+Trainable params: 741194 (2.83 MB)
+Non-trainable params: 2688 (10.50 KB)
+_________________________________________________________________

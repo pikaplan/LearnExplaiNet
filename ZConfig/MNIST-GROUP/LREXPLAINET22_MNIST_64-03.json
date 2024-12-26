@@ -1,0 +1,70 @@
+{
+    "Version": "1.2",
+    "Experiment.BaseName": "LREXPLAINET22_MNIST",
+    "Experiment.Number": 64,
+    "Experiment.Variation": null,
+    "Experiment.FoldNumber": 3,
+    "DatasetName": "mnist",
+    "Validation.BatchSize": 200,
+    "Prediction.BatchSize": 200,
+    "InputShape": [
+        28,
+        28,
+        1
+    ],
+    "ResNet.Stem.Features": [
+        64
+    ],
+    "ResNet.Blocks.Features": [
+        64,
+        64,
+        64,
+        64,
+        64,
+        10
+    ],
+    "ResNet.Blocks.Modules": [
+        2,
+        2,
+        2,
+        2,
+        2
+    ],
+    "ResNet.Blocks.IsDownsampling": [
+        false,
+        true,
+        false,
+        true,
+        true
+    ],
+    "ResNet.ModuleType": 0,
+    "ClassCount": 10,
+    "ResNet.IsExplainableStem": false,
+    "Training.WeightDecay": 0.001,
+    "Training.MaxEpoch": 60,
+    "Training.BatchSize": 128,
+    "Training.Optimizer": "SGD",
+    "Training.LearningRate": 0.02,
+    "Training.Momentum": 0.9,
+    "Training.LearningRateSchedule": [
+        [
+            15,
+            0.01
+        ],
+        [
+            30,
+            0.005
+        ],
+        [
+            40,
+            0.002
+        ],
+        [
+            50,
+            0.001
+        ]
+    ],
+    "#1_NOTES": "____",
+    "#2_METRICS.Accuracy": "____",
+    "Experiment.RandomSeed": 2016
+}
